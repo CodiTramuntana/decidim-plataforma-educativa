@@ -10,7 +10,6 @@ threads threads_count, threads_count
 
 preload_app!
 
-rackup DefaultRackup
 port ENV.fetch("PORT", nil) || 3000
 env = ENV.fetch("RACK_ENV", nil) || ENV.fetch("RAILS_ENV", nil) || :production
 environment env
