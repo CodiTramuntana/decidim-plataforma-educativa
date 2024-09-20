@@ -1,5 +1,8 @@
-namespace :clean_app do
+# frozen_string_literal: true
 
+# rubocop: disable Rails/RakeEnvironment
+# rubocop: disable Style/SpecialGlobalVars
+namespace :clean_app do
   desc "Add clean app remote repository"
   task :add do
     puts "Adding the clean-app remote..."
@@ -9,7 +12,7 @@ namespace :clean_app do
   end
 
   desc "Pull changes from clean-app. Syncs from `master` branch by default"
-  task :sync, [:branch] => :environment do |task, args|
+  task :sync, [:branch] do |_task, args|
     puts "Rails.env: #{Rails.env}"
     branch = args.branch || "master"
     puts "1. Pulling from clean-app #{branch} branch..."
@@ -33,3 +36,5 @@ namespace :clean_app do
     puts "4. bin/rails db:migrate"
   end
 end
+# rubocop: enable Style/SpecialGlobalVars
+# rubocop: enable Rails/RakeEnvironment
