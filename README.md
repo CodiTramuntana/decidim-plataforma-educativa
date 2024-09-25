@@ -12,26 +12,49 @@ In the top-right corner of the page, click **Fork**.
 
 To keep your fork up-to-date with the upstream repository, i.e., to upgrade decidim, you must configure a remote that points to the upstream repository in Git.
 
-```console
+You can do it with the included rake task:
+
+```bash
+bin/rake clean_app:install
+```
+
+or do it manually:
+
+
+```bash
 # List the current configured remote repository for your fork.
 $ git remote -v
 # Specify the new remote upstream repository that will be synced with the fork.
-$ git remote add decidim-clean git@gitlab.coditdev.net:decidim/decidim-clean-app.git
+$ git remote add clean-app https://github.com/CodiTramuntana/decidim-clean-app.git
 # Verify the new decidim-clean repository you've specified for your fork.
 $ git remote -v
 ```
+
 Syncing a fork
-```console
-# Check out your fork's local master branch.
+
+You can do it with the included rake task:
+
+```bash
+# Pull from master by default
+bin/rake clean_app:sync
+# Or pull from a specific branch
+bin/rake clean_app:sync[release/0.27-stable]
+```
+
+or do it manually:
+
+```bash
+# Create a new branch in your fork to start a PR.
 $ git checkout master
 # Incorporate changes from the decidim-clean repository into the current branch.
-$ git pull decidim-clean
+$ git pull clean-app master --allow-unrelated-histories
 ```
 
 ## Customize your fork
 
 The following files should be modified:
 
+- README.md
 - package.json
 - config/application.rb
 - config/initializers/decidim.rb
@@ -43,7 +66,7 @@ Run `bin/rake decidim:generate_external_test_app` to generate a dummy applicatio
 Require missing factories in `spec/factories.rb`
 
 Add `require "rails_helper"` to your specs and execute them from the **root directory**, i.e.:
- 	
-## Upgrades with clean-app
-	
-Documentation in `docs/upgrade_apps.md`.
+
+## Migrate an app to synchronize from clean-app
+
+Documentation in `docs/migrate_to_clean_app.md`.

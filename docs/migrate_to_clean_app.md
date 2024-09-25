@@ -69,6 +69,6 @@ Solve conflicts and....
 
 # For the next times
 
-1. `git pull remote-clean_app 0.2X-stable`
+1. Use the included `bin/rake clean_app:sync`
 2. Solve conflicts
 3. That's all!
