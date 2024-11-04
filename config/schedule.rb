@@ -15,7 +15,7 @@ every 1.day, at: "4:00 am" do
 end
 
 every :sunday, at: "4:30 am" do
-  rake "decidim:delete_data_portability_files"
+  rake "decidim:delete_download_your_data_files"
 end
 
 every 1.day, at: "5:00 am" do
@@ -25,3 +25,7 @@ end
 every 1.day, at: "6:00 am" do
   rake "decidim:open_data:export"
 end
+
+# every 5.minutes do
+#   rake "participatory_processes_phases:enqueue_change_active_step"
+# end
