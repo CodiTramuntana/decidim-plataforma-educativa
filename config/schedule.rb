@@ -26,6 +26,14 @@ every 1.day, at: "6:00 am" do
   rake "decidim:open_data:export"
 end
 
+every 1.day, at: "6:30 am" do
+  rake "decidim:mailers:notifications_digest_daily"
+end
+
+every :sunday, at: "7:00 am" do
+  rake "decidim:mailers:notifications_digest_weekly"
+end
+
 # every 5.minutes do
 #   rake "participatory_processes_phases:enqueue_change_active_step"
 # end
