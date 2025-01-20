@@ -34,7 +34,7 @@ gem "figjam"
 # endif
 
 # concurrent-ruby v1.3.5 has removed the dependency on logger
-gem 'concurrent-ruby'
+gem "concurrent-ruby"
 
 group :development, :test do
   gem "better_errors"
@@ -43,10 +43,6 @@ group :development, :test do
   gem "byebug", platform: :mri
   gem "decidim-dev", DECIDIM_VERSION
   gem "faker"
-  # Set versions because Property AutoCorrect errors.
-  # gem "rspec-rails", "~> 6.0.4"
-  # gem "rubocop-factory_bot", "2.25.1"
-  # gem "rubocop-rspec", "2.26.1"
 end
 
 group :development do
