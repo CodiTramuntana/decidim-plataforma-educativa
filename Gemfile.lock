@@ -910,7 +910,6 @@ DEPENDENCIES
   decidim-cdtb!
   decidim-dev!
   delayed_job_active_record
-  faker (~> 3.6.0)
   figjam
   letter_opener_web
   listen
