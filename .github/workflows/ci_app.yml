@@ -86,7 +86,10 @@ jobs:
           node-version: ${{ env.NODE_VERSION }}
           cache: 'npm'
       - run: npm install
-      - run: bundle exec rake db:test:prepare
-        name: Setup database
+      - name: Generate test_app
+        run: |
+          RAILS_ENV=test bundle exec rails db:create
+          PGPASSWORD=${{ env.DB_PASSWORD }} psql -h ${{ env.DB_HOST }} -U ${{ env.DB_USERNAME }} -d ${{ env.DB_DATABASE }} -c "CREATE EXTENSION IF NOT EXISTS pgcrypto;"
+          RAILS_ENV=test bundle exec rails db:migrate
       - run: bundle exec rspec
         name: Run specs
