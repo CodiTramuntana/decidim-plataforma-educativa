@@ -9,6 +9,15 @@ GIT
       ruby-progressbar
 
 GIT
+  remote: https://github.com/CodiTramuntana/decidim-module-term_customizer.git
+  revision: 040149e649ec2a004f84e53783fe36529ab7a7f4
+  branch: upgrade/decidim_0.30
+  specs:
+    decidim-term_customizer (0.30.0)
+      decidim-admin (~> 0.30.0)
+      decidim-core (~> 0.30.0)
+
+GIT
   remote: https://github.com/CodiTramuntana/decidim.git
   revision: 5a8d0a9eb1f84f2bd184ef0e32db20bf46c36bd5
   branch: release/0.30-stable
@@ -909,6 +918,7 @@ DEPENDENCIES
   decidim!
   decidim-cdtb!
   decidim-dev!
+  decidim-term_customizer!
   delayed_job_active_record
   figjam
   letter_opener_web
