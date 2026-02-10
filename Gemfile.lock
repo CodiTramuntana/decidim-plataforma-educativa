@@ -248,6 +248,8 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.1, >= 1.2.0)
+    active_hashcash (0.4.0)
+      rails (>= 5.2.0)
     active_link_to (1.0.5)
       actionpack
       addressable
@@ -345,9 +347,21 @@ GEM
       activemodel (>= 3)
       activesupport (>= 3)
     debug_inspector (1.2.0)
+    decidim-decidim_awesome (0.13.2)
+      active_hashcash (~> 0.4.0)
+      decidim-admin (>= 0.30.0, < 0.31)
+      decidim-core (>= 0.30.0, < 0.31)
+      deface (>= 1.5)
+      sassc (~> 2.3)
     declarative-builder (0.2.0)
       trailblazer-option (~> 0.1.0)
     declarative-option (0.1.0)
+    deface (1.9.0)
+      actionview (>= 5.2)
+      nokogiri (>= 1.6)
+      polyglot
+      railties (>= 5.2)
+      rainbow (>= 2.1.0)
     delayed_job (4.1.13)
       activesupport (>= 3.0, < 9.0)
     delayed_job_active_record (4.1.11)
@@ -637,6 +651,7 @@ GEM
     pg_search (2.3.7)
       activerecord (>= 6.1)
       activesupport (>= 6.1)
+    polyglot (0.3.5)
     premailer (1.27.0)
       addressable
       css_parser (>= 1.19.0)
@@ -811,6 +826,8 @@ GEM
       google-protobuf (~> 4.31)
     sass-embedded (1.97.3-x86_64-linux-musl)
       google-protobuf (~> 4.31)
+    sassc (2.4.0)
+      ffi (~> 1.9)
     selenium-webdriver (4.27.0)
       base64 (~> 0.2)
       logger (~> 1.4)
@@ -917,6 +934,7 @@ DEPENDENCIES
   daemons
   decidim!
   decidim-cdtb!
+  decidim-decidim_awesome (~> 0.13.0)
   decidim-dev!
   decidim-term_customizer!
   delayed_job_active_record
