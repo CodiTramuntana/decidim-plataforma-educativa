@@ -9,7 +9,7 @@ on:
   pull_request:
 
 env:
-  RUBY_VERSION: 3.2.2
+  RUBY_VERSION: 3.3.4
   NODE_VERSION: 18.17.1
 
 jobs:
@@ -62,7 +62,7 @@ jobs:
           chrome-version: 119.0.6045.105
 
       - name: Recover Ruby dependency cache
-        uses: actions/cache@v1
+        uses: actions/cache@v4
         with:
           path: ./vendor/bundle
           key: ${{ runner.OS }}-app-rubydeps-${{ hashFiles('Gemfile.lock') }}
@@ -81,12 +81,15 @@ jobs:
           retry_on: error
           command: bundle install --jobs 4 --retry 3
 
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v6
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: 'npm'
       - run: npm install
-      - run: bundle exec rake db:test:prepare
-        name: Setup database
+      - name: Generate test_app
+        run: |
+          RAILS_ENV=test bundle exec rails db:create
+          PGPASSWORD=${{ env.DB_PASSWORD }} psql -h ${{ env.DB_HOST }} -U ${{ env.DB_USERNAME }} -d ${{ env.DB_TEST_DATABASE }} -c "CREATE EXTENSION IF NOT EXISTS pgcrypto;"
+          RAILS_ENV=test bundle exec rails db:migrate
       - run: bundle exec rspec
         name: Run specs

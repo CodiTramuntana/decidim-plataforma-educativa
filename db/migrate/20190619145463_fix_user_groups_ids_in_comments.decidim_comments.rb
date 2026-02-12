@@ -1,6 +1,7 @@
 # frozen_string_literal: true
-# This migration comes from decidim_comments (originally 20181003080320)
 
+# This migration comes from decidim_comments (originally 20181003080320)
+# This file has been modified by `decidim upgrade:migrations` task on 2026-02-03 11:53:11 UTC
 class FixUserGroupsIdsInComments < ActiveRecord::Migration[5.2]
   # rubocop:disable Rails/SkipsModelValidations
   def change
