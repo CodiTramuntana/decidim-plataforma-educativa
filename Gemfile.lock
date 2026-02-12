@@ -929,7 +929,6 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bootsnap
-  byebug
   concurrent-ruby
   daemons
   decidim!
