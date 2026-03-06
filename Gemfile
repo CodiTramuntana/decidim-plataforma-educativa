@@ -23,18 +23,6 @@ gem "whenever"
 # https://github.com/hlascelles/figjam
 gem "figjam"
 
-# if deploying to a PaaS like Heroku
-# gem "redis"
-# gem "sidekiq"
-# group :production do
-# if AWS is used
-#   gem "aws-sdk-s3", require: false
-#   gem "fog-aws"
-#   gem "rack-ssl-enforcer"
-#   gem "rails_12factor"
-# end
-# endif
-
 # concurrent-ruby v1.3.5 has removed the dependency on logger
 gem "concurrent-ruby"
 
