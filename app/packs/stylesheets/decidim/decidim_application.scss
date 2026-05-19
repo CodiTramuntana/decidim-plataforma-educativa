@@ -2,4 +2,37 @@
 // Notice that this file is included at the very end of the stylesheets packs to have
 // more priority
 //
-// By default this is empty.
+// Microsoft Entra ID sign-in button
+.login__omniauth-button--entra {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 12px !important;
+  width: auto !important;
+  background-color: #ffffff;
+  border: 1px solid #8c8c8c !important;
+  border-radius: 4px;
+  padding: 10px 16px !important;
+  text-decoration: none;
+  box-shadow: none !important;
+
+  svg {
+    display: block;
+    width: 21px !important;
+    height: 21px !important;
+    flex: none;
+  }
+
+  // Override Decidim's global `display: none` on button spans
+  span {
+    display: inline !important;
+    line-height: 1.2;
+    color: #5e5e5e;
+  }
+
+  &:hover {
+    background-color: #f2f2f2 !important;
+    color: #5e5e5e !important;
+    text-decoration: none;
+  }
+}

@@ -1,7 +1,16 @@
 es:
   decidim:
+    omniauth_providers:
+      entra_id: "Microsoft"
     verifications:
-        id_documents:
-          dni: DNI
-          nie: NIE
-          passport: Pasaporte
+      id_documents:
+        dni: DNI
+        nie: NIE
+        passport: Pasaporte
+    system:
+      organizations:
+        omniauth_settings:
+          entra_id:
+            client_id: Client ID
+            client_secret: Client Secret
+            tenant_id: Tenant ID

@@ -16,3 +16,12 @@ File.expand_path("..", __dir__)
 # If you want to do the same but include the SCSS file for the admin panel's
 # main SCSS file, you can use the following method.
 # Decidim::Webpacker.register_stylesheet_import("stylesheets/your_app_admin_extensions", group: :admin)
+
+# frozen_string_literal: true
+
+base_path = File.expand_path("..", __dir__)
+
+Decidim::Webpacker.register_path("#{base_path}/app/packs")
+Decidim::Webpacker.register_entrypoints(
+  decidim_plataforma_educativa: "#{base_path}/app/packs/entrypoints/application.js"
+)
