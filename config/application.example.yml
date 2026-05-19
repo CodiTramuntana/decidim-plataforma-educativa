@@ -26,6 +26,12 @@ default: &default
   # GeoCoder configuration (developer.here.com)
   GEOCODER_LOOKUP_API_KEY: "here_api_key"
   SECRET_KEY_BASE: "must be different for each environment; run bin/rake secret and copy here"
+  # Azure SSO (Entra ID) — single-tenant authentication
+  # Register the callback URL in your Azure app registration:
+  #   https://<your-domain>/users/auth/entra_id/callback
+  AZURE_CLIENT_ID: "your-azure-application-client-id"
+  AZURE_CLIENT_SECRET: "your-azure-application-client-secret"
+  AZURE_TENANT_ID: "your-azure-directory-tenant-id"
 
 development:
   <<: *default
