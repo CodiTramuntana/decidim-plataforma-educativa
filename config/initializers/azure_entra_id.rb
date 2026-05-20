@@ -17,7 +17,6 @@ if omniauth_secrets&.dig(:client_id).present?
         client_secret: client_secret,
         tenant_id: tenant_id,
         icon_path: omniauth_secrets[:icon_path].presence || "media/images/entra_id_logo.svg",
-        scope: "openid profile email",
       }.compact
     )
   end
