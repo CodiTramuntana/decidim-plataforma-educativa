@@ -12,25 +12,25 @@ module Decidim
   describe CreateOmniauthRegistration do
     describe "#call" do
       let(:organization) { create(:organization) }
-      let(:provider)     { "entra_id" }
-      let(:tid)          { "azure_test_tenant_id" }
-      let(:oid)          { "azure_test_user_oid" }
-      let(:uid)          { "#{tid}#{oid}" }
-      let(:email)        { "user@azure.example.com" }
+      let(:provider) { "entra_id" }
+      let(:tid) { "azure_test_tenant_id" }
+      let(:oid) { "azure_test_user_oid" }
+      let(:uid) { "#{tid}#{oid}" }
+      let(:email) { "user@azure.example.com" }
       let(:verified_email) { email }
       let(:oauth_signature) { OmniauthRegistrationForm.create_signature(provider, uid) }
 
       let(:form_params) do
         {
           "user" => {
-            "provider"        => provider,
-            "uid"             => uid,
-            "email"           => email,
-            "email_verified"  => true,
-            "name"            => "Azure User",
-            "nickname"        => "azure_user",
+            "provider" => provider,
+            "uid" => uid,
+            "email" => email,
+            "email_verified" => true,
+            "name" => "Azure User",
+            "nickname" => "azure_user",
             "oauth_signature" => oauth_signature,
-            "tos_agreement"   => "1"
+            "tos_agreement" => "1"
           }
         }
       end
@@ -95,8 +95,8 @@ module Decidim
 
       context "when login with a corporate alias — same uid, different email" do
         let(:primary_email) { "primary@azure.example.com" }
-        let(:alias_email)   { "alias@azure.example.com" }
-        let(:email)         { alias_email }
+        let(:alias_email) { "alias@azure.example.com" }
+        let(:email) { alias_email }
         let(:verified_email) { alias_email }
 
         before do
@@ -125,20 +125,20 @@ module Decidim
       end
 
       context "when the Azure token is missing an email" do
-        let(:email)          { nil }
+        let(:email) { nil }
         let(:verified_email) { nil }
 
         let(:form_params) do
           {
             "user" => {
-              "provider"        => provider,
-              "uid"             => uid,
-              "email"           => nil,
-              "email_verified"  => false,
-              "name"            => "Azure User",
-              "nickname"        => "azure_user",
+              "provider" => provider,
+              "uid" => uid,
+              "email" => nil,
+              "email_verified" => false,
+              "name" => "Azure User",
+              "nickname" => "azure_user",
               "oauth_signature" => oauth_signature,
-              "tos_agreement"   => "1"
+              "tos_agreement" => "1"
             }
           }
         end

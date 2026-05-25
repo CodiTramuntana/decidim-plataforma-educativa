@@ -4,26 +4,26 @@ require "spec_helper"
 
 describe "Azure SSO" do
   let(:organization) { create(:organization) }
-  let(:tid)          { "azure_test_tenant_id" }
-  let(:oid)          { "azure_test_user_oid" }
-  let(:uid)          { "#{tid}#{oid}" }
-  let(:user_email)   { "user@azure.example.com" }
+  let(:tid) { "azure_test_tenant_id" }
+  let(:oid) { "azure_test_user_oid" }
+  let(:uid) { "#{tid}#{oid}" }
+  let(:user_email) { "user@azure.example.com" }
 
   let(:omniauth_hash) do
     OmniAuth::AuthHash.new(
       provider: "entra_id",
       uid: uid,
       info: {
-        email:      user_email,
-        name:       "Azure User",
-        nickname:   "azure_user"
+        email: user_email,
+        name: "Azure User",
+        nickname: "azure_user"
       },
       extra: {
         raw_info: {
           "tid" => tid,
           "oid" => oid,
           "email" => user_email,
-          "name"  => "Azure User"
+          "name" => "Azure User"
         }
       }
     )
@@ -81,7 +81,7 @@ describe "Azure SSO" do
     it "signs in the existing user without creating duplicates" do
       visit decidim.new_user_session_path
 
-      previous_user_count     = Decidim::User.count
+      previous_user_count = Decidim::User.count
       previous_identity_count = Decidim::Identity.count
 
       find(".login__omniauth-button--entra").click
