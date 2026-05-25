@@ -9,7 +9,7 @@ describe "Homepage" do
     create(
       :organization,
       name: { en: "Decidim Application" },
-      default_locale: :en,
+      default_locale: :ca,
       available_locales: [:ca, :en, :es]
     )
   end
@@ -24,7 +24,7 @@ describe "Homepage" do
   it "renders the home page" do
     # By default there isn't any Content Block enabled, so we search a content from the header
     within ".main-bar" do
-      expect(page).to have_content("Help")
+      expect(page).to have_content("Ajuda")
     end
   end
 
