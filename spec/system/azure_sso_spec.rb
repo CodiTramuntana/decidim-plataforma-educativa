@@ -46,7 +46,7 @@ describe "Azure SSO" do
   describe "Azure login button" do
     before { visit decidim.new_user_session_path }
 
-    it "displays the Sign in with Microsoft button linking to the entra_id provider" do
+    it "displays the Azure SSO button linking to the entra_id provider" do
       expect(page).to have_css(".login__omniauth-button--entra[href='/users/auth/entra_id']")
     end
   end
