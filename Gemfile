@@ -23,6 +23,8 @@ gem "whenever"
 # https://github.com/hlascelles/figjam
 gem "figjam"
 
+gem "omniauth-entra-id", "~> 3.1.1"
+
 # concurrent-ruby v1.3.5 has removed the dependency on logger
 gem "concurrent-ruby"
 

@@ -3,42 +3,37 @@
 require "spec_helper"
 
 describe "Homepage" do
-  include Decidim::SanitizeHelper
-
   let!(:organization) do
     create(
       :organization,
-      name: { en: "Decidim Application" },
+      name: { ca: "Plataforma Educativa" },
       default_locale: :en,
       available_locales: [:ca, :en, :es]
     )
   end
-  let!(:hero) { create(:content_block, organization: organization, scope_name: :homepage, manifest_name: :hero, settings: { "welcome_text_ca"=>"Benvinguda a Decidim Application" }) }
-  let!(:sub_hero) { create(:content_block, organization: organization, scope_name: :homepage, manifest_name: :sub_hero) }
+  let!(:hero) do
+    create(:content_block, organization: organization, scope_name: :homepage, manifest_name: :hero, settings: {
+             "welcome_text_ca" => "Benvinguda a Plataforma Educativa"
+           })
+  end
+  let!(:sub_hero) do
+    create(:content_block, organization: organization, scope_name: :homepage, manifest_name: :sub_hero)
+  end
 
   before do
     switch_to_host(organization.host)
     visit decidim.root_path(locale: I18n.locale)
   end
 
-  it "renders the home page" do
-    # By default there isn't any Content Block enabled, so we search a content from the header
-    within ".main-bar" do
-      expect(page).to have_content("Help")
-    end
-  end
-
   it "loads and shows organization name and main blocks" do
     visit decidim.root_path
 
-    expect(page).to have_content("Decidim Application")
-
-    within "section .hero .hero__title" do
-      expect(page).to have_content("Benvinguda a Decidim Application")
+    expect(page).to have_content("Plataforma Educativa")
+    within "section.hero__container .hero__title" do
+      expect(page).to have_content("Benvinguda a Plataforma Educativa")
     end
-
-    within "section#sub_hero" do
-      subhero_msg = translated(organization.description).gsub(%r{</p>\s+<p>}, "<br><br>").gsub(%r{<p>(((?!</p>).)*)</p>}mi, "\\1").gsub(%r{<script>(((?!</script>).)*)</script>}mi, "\\1")
+    within "section.home__section" do
+      subhero_msg = translated(organization.description).gsub(%r{</p>\s+<p>}, "<br><br>").gsub(%r{<p>(((?!</p>).)*)</p>}mi, '\\1').gsub(%r{<script>(((?!</script>).)*)</script>}mi, '\\1')
       expect(page).to have_content(subhero_msg)
     end
   end

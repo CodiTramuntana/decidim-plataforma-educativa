@@ -38,6 +38,7 @@ spec/decidim_dummy_app/
 /public/sw.js.br
 /public/sw.js.map.gz
 /public/sw.js.map.br
+/public/sw.js*
 
 node_modules/
 storage/
@@ -48,3 +49,5 @@ yarn-debug.log*
 
 /config/master.key
 tailwind.config.js
+
+.claude
