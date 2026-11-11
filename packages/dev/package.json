@@ -12,7 +12,6 @@
   "dependencies": {
     "@linthtml/linthtml": "^0.10.2",
     "axe-core": "^4.7.2",
-    "chalk": "^4.1.2",
     "markdownlint-cli": "^0.35.0"
   }
 }

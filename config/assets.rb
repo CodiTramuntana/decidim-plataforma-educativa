@@ -11,17 +11,17 @@ File.expand_path("..", __dir__)
 # method to register the stylesheet import for the main application. This would
 # include an SCSS file at `app/packs/stylesheets/your_app_extensions.scss` into
 # the Decidim's main SCSS file.
-# Decidim::Webpacker.register_stylesheet_import("stylesheets/your_app_extensions")
+# Decidim::Shakapacker.register_stylesheet_import("stylesheets/your_app_extensions")
 
 # If you want to do the same but include the SCSS file for the admin panel's
 # main SCSS file, you can use the following method.
-# Decidim::Webpacker.register_stylesheet_import("stylesheets/your_app_admin_extensions", group: :admin)
+# Decidim::Shakapacker.register_stylesheet_import("stylesheets/your_app_admin_extensions", group: :admin)
 
 # frozen_string_literal: true
 
 base_path = File.expand_path("..", __dir__)
 
-Decidim::Webpacker.register_path("#{base_path}/app/packs")
-Decidim::Webpacker.register_entrypoints(
+Decidim::Shakapacker.register_path("#{base_path}/app/packs")
+Decidim::Shakapacker.register_entrypoints(
   decidim_plataforma_educativa: "#{base_path}/app/packs/entrypoints/application.js"
 )

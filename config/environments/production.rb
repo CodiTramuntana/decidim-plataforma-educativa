@@ -63,15 +63,17 @@ Rails.application.configure do
 
   # Prepend all log lines with the following tags.
   config.log_tags = [:request_id]
+  config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address: Decidim::Env.new("SMTP_ADDRESS").to_s,
-    port: Decidim::Env.new("SMTP_PORT", 587).to_i,
-    authentication: Decidim::Env.new("SMTP_AUTHENTICATION", "plain").to_s,
-    user_name: Decidim::Env.new("SMTP_USERNAME").to_s,
-    password: Decidim::Env.new("SMTP_PASSWORD").to_s,
-    domain: Decidim::Env.new("SMTP_DOMAIN").to_s,
-    enable_starttls_auto: Decidim::Env.new("SMTP_STARTTLS_AUTO").to_boolean_string,
-    openssl_verify_mode: "none"
+    address: Decidim::Env.new("MAILER_SMTP_ADDRESS", "smtp.sendgrid.net").to_s,
+    port: Decidim::Env.new("MAILER_SMTP_PORT", 587).to_i,
+    authentication: Decidim::Env.new("MAILER_SMTP_AUTHENTICATION", "login").to_s,
+    user_name: Decidim::Env.new("MAILER_SMTP_USER_NAME").to_s,
+    password: Decidim::Env.new("MAILER_SMTP_PASSWORD").to_s,
+    domain: Decidim::Env.new("MAILER_SMTP_DOMAIN").to_s,
+    enable_starttls_auto: Decidim::Env.new("MAILER_SMTP_STARTTLS_AUTO", "true").present?,
+    openssl_verify_mode: "none",
+    ssl: false
   }
 
   # "info" includes generic and useful information about system operation, but avoids logging too much
@@ -98,25 +100,10 @@ Rails.application.configure do
   # the I18n.default_locale when a translation cannot be found).
   config.i18n.fallbacks = true
 
-  # Send deprecation notices to registered listeners.
-  config.active_support.deprecation = :notify
+  # Don't log any deprecations.
+  config.active_support.report_deprecations = false
 
-  # Use default logging formatter so that PID and timestamp are not suppressed.
-  config.log_formatter = Logger::Formatter.new
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    address: Rails.application.secrets.smtp_address,
-    port: Rails.application.secrets.smtp_port,
-    authentication: Rails.application.secrets.smtp_authentication,
-    user_name: Rails.application.secrets.smtp_username,
-    password: Rails.application.secrets.smtp_password,
-    domain: Rails.application.secrets.smtp_domain,
-    enable_starttls_auto: Rails.application.secrets.smtp_starttls_auto,
-    openssl_verify_mode: "none",
-    ssl: false
-  }
-
-  if Rails.application.secrets.sendgrid
+  if ENV["SENDGRID_USERNAME"].present?
     config.action_mailer.default_options = {
       "X-SMTPAPI" => {
         filters: {
@@ -127,19 +114,6 @@ Rails.application.configure do
     }
   end
 
-  # Use a different logger for distributed setups.
-  # require 'syslog/logger'
-  # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
-
-  if ENV["RAILS_LOG_TO_STDOUT"].present?
-    logger = ActiveSupport::Logger.new($stdout)
-    logger.formatter = config.log_formatter
-    config.logger = ActiveSupport::TaggedLogging.new(logger)
-  end
-
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
-
-  # Store files locally.
-  config.active_storage.service = :local
 end

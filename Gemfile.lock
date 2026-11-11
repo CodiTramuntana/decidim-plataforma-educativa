@@ -9,15 +9,6 @@ GIT
       ruby-progressbar
 
 GIT
-  remote: https://github.com/CodiTramuntana/decidim-module-term_customizer.git
-  revision: 040149e649ec2a004f84e53783fe36529ab7a7f4
-  branch: upgrade/decidim_0.30
-  specs:
-    decidim-term_customizer (0.30.0)
-      decidim-admin (~> 0.30.0)
-      decidim-core (~> 0.30.0)
-
-GIT
   remote: https://github.com/CodiTramuntana/decidim.git
   revision: 0bad1c514400db7753e5952eadb96d7adb49a7f9
   branch: release/0.31-stable
@@ -204,6 +195,15 @@ GIT
     decidim-verifications (0.31.7)
       decidim-core (= 0.31.7)
 
+GIT
+  remote: https://github.com/mainio/decidim-module-term_customizer
+  revision: 5e4e89c1a38a271b561efe22d006422224329b0a
+  branch: release/0.31-stable
+  specs:
+    decidim-term_customizer (0.31.0)
+      decidim-admin (~> 0.31.0)
+      decidim-core (~> 0.31.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -253,6 +253,8 @@ GEM
       erubi (~> 1.11)
       rails-dom-testing (~> 2.2)
       rails-html-sanitizer (~> 1.6)
+    active_hashcash (0.4.0)
+      rails (>= 5.2.0)
     active_link_to (1.0.5)
       actionpack
       addressable
@@ -368,15 +370,21 @@ GEM
       activemodel (>= 3)
       activesupport (>= 3)
     debug_inspector (1.2.0)
-    decidim-decidim_awesome (0.13.2)
+    decidim-decidim_awesome (0.14.5)
       active_hashcash (~> 0.4.0)
-      decidim-admin (>= 0.30.0, < 0.31)
-      decidim-core (>= 0.30.0, < 0.31)
+      decidim-admin (>= 0.31.0, < 0.32)
+      decidim-core (>= 0.31.0, < 0.32)
       deface (>= 1.5)
       sassc (~> 2.3)
     declarative-builder (0.2.0)
       trailblazer-option (~> 0.1.0)
     declarative-option (0.1.0)
+    deface (1.9.0)
+      actionview (>= 5.2)
+      nokogiri (>= 1.6)
+      polyglot
+      railties (>= 5.2)
+      rainbow (>= 2.1.0)
     delayed_job (4.2.0)
       activesupport (>= 3.0, < 9.0)
       benchmark
@@ -708,6 +716,7 @@ GEM
     pg_search (2.3.8)
       activerecord (>= 7.2)
       activesupport (>= 7.2)
+    polyglot (0.3.5)
     pp (0.6.4)
       prettyprint
     premailer (1.30.0)
@@ -916,6 +925,8 @@ GEM
       google-protobuf (~> 4.31)
     sass-embedded (1.103.1-x86_64-linux-musl)
       google-protobuf (~> 4.31)
+    sassc (2.4.0)
+      ffi (~> 1.9)
     securerandom (0.4.1)
     selenium-webdriver (4.48.0)
       base64 (~> 0.2)
@@ -1031,7 +1042,7 @@ DEPENDENCIES
   daemons
   decidim!
   decidim-cdtb!
-  decidim-decidim_awesome (~> 0.13.0)
+  decidim-decidim_awesome (~> 0.14.0)
   decidim-dev!
   decidim-term_customizer!
   delayed_job_active_record
@@ -1051,6 +1062,7 @@ CHECKSUMS
   actionpack (7.2.3.2) sha256=c1fbb1c4df0f2473ee064ab1412fc2a44c2c2ef337924c5ba3c7998c8529652b
   actiontext (7.2.3.2) sha256=19ab7e2a07ab976a5456a9aa98b93e1b899a7729b931ca1e9e01a3e8bd33f0b0
   actionview (7.2.3.2) sha256=42bfd966040c93271dfa9f3243d73c40aa0228108696f956e1f287f3b02edc01
+  active_hashcash (0.4.0) sha256=20c72cb358eeabfa30c184e3f9041a22a02b88072a942e804fb586b42b695fe6
   active_link_to (1.0.5) sha256=4830847b3d14589df1e9fc62038ceec015257fce975ec1c2a77836c461b139ba
   activejob (7.2.3.2) sha256=b83fa070898911823f0c4cb8c0d1d25dabb5d00f18379d5b4fe01b84e173a93a
   activemodel (7.2.3.2) sha256=3777c67cd8dd1560f30387523013dacb370a0a1cf532037410887819e4416927
@@ -1110,6 +1122,7 @@ CHECKSUMS
   decidim-comments (0.31.7)
   decidim-core (0.31.7)
   decidim-debates (0.31.7)
+  decidim-decidim_awesome (0.14.5) sha256=3f4b28b13bfc60a8fcde4bd5190bdac902ddf224a0146fc32f6148b0907409ac
   decidim-dev (0.31.7)
   decidim-forms (0.31.7)
   decidim-generators (0.31.7)
@@ -1120,9 +1133,11 @@ CHECKSUMS
   decidim-sortitions (0.31.7)
   decidim-surveys (0.31.7)
   decidim-system (0.31.7)
+  decidim-term_customizer (0.31.0)
   decidim-verifications (0.31.7)
   declarative-builder (0.2.0) sha256=2a46988c32b97c9e77c7739b7bbdd4ab7042c9584836c4abf5ac90024af6f1af
   declarative-option (0.1.0) sha256=17508349f51c5631e5ad4158c29f78a4b2de618abffa066d76c11953705f91bc
+  deface (1.9.0) sha256=b6da77da3618efa4ec33474debc7e95f8b4d84775f34b9d13799d97f6aef3806
   delayed_job (4.2.0) sha256=51dc1f68bb9084398317884c2178debd38c13a7eb48d8aa4ff4775465d7713ef
   delayed_job_active_record (4.1.11) sha256=64f34a6d50316dd7a7df1daf7c6e04ad888c0e86938762318f6f52522b7c1ba8
   devise (4.9.4) sha256=920042fe5e704c548aa4eb65ebdd65980b83ffae67feb32c697206bfd975a7f8
@@ -1234,6 +1249,7 @@ CHECKSUMS
   oauth-tty (1.0.13) sha256=71ad5f93ceea6fd21fe9a731dc02a4b892c5de9d77e0b303e81bd73f9daeb4a3
   oauth2 (2.0.25) sha256=2f736a2f93c2caa67c1b08dc3c9889bb907d62643f3183fefaa1723cba6a82ac
   omniauth (2.1.4) sha256=42a05b0496f0d22e1dd85d42aaf602f064e36bb47a6826a27ab55e5ba608763c
+  omniauth-entra-id (3.1.1) sha256=16622979423891352f916709f0698401e692e60bb41d4dbf5f7a17d98fee27ef
   omniauth-facebook (5.0.0) sha256=d20317f8d9274e8b8f1ee2f26927b80d0fac85bf51eee62b28470c62f73694da
   omniauth-google-oauth2 (1.2.3) sha256=bdbab67e64e50b7902eee2dcfc2225575cefba15ab89a3b6e92c8947987c1da9
   omniauth-oauth (1.2.1) sha256=25bf22c90234280fa825200490f03ff1ce7d76f1a4fbd6c882c6c5b169c58da8
@@ -1251,6 +1267,7 @@ CHECKSUMS
   parser (3.3.12.0) sha256=21a6d7f755d5a24dfbdc6e6b772e4e879a52e7631a88bc5a3a134606052c9828
   pg (1.5.9) sha256=761efbdf73b66516f0c26fcbe6515dc7500c3f0aa1a1b853feae245433c64fdc
   pg_search (2.3.8) sha256=10e2d365d76ac432c79875c3ce17cf285c97c029548d84990b02406e52347c06
+  polyglot (0.3.5) sha256=59d66ef5e3c166431c39cb8b7c1d02af419051352f27912f6a43981b3def16af
   pp (0.6.4) sha256=dfcb0fce700c41456265922884f9fe195d7fbb0674a3578e6c0f69588e82b570
   premailer (1.30.0) sha256=55f7cfa5099c18f3698a0b5548da448f402e8bf4cbc9410e32e37fb211078c21
   premailer-rails (1.12.0) sha256=c13815d161b9bc7f7d3d81396b0bb0a61a90fa9bd89931548bf4e537c7710400
@@ -1323,6 +1340,7 @@ CHECKSUMS
   sass-embedded (1.103.1-x86_64-darwin) sha256=75514c8f62a849e5e2e98fe89268176278fb0900751208a7ae3322451a0b5285
   sass-embedded (1.103.1-x86_64-linux-gnu) sha256=1056cb8031fbceee992a3d07c39e9118864aa280e1ba03d85bc5397bd4479333
   sass-embedded (1.103.1-x86_64-linux-musl) sha256=2f52d9f70030a2d8ddbff8289049df1d38f20f55ba05a87a0049d99fbaa1108c
+  sassc (2.4.0) sha256=4c60a2b0a3b36685c83b80d5789401c2f678c1652e3288315a1551d811d9f83e
   securerandom (0.4.1) sha256=cc5193d414a4341b6e225f0cb4446aceca8e50d5e1888743fac16987638ea0b1
   selenium-webdriver (4.48.0) sha256=0c8376ebc8a0a4879343fe6fe6eccdcea76748611cd25de370b33eded2077a94
   semantic_range (3.1.1) sha256=508333196ef0c7ba33e79579d4df7eb0a41080595e6a655c2515b03d634ec4a9

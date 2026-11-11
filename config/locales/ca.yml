@@ -1,5 +1,16 @@
 ca:
+  activemodel:
+    attributes:
+      participatory_process:
+        duplicate_steps: Duplicar fases
+        import_steps: Importar fases
   decidim:
+    pages:
+      admin:
+        pages:
+          edit:
+            add_attachments: Afegir fitxer(s) adjunt(s)
+            edit_attachments: Editar fitxer(s) adjunt(s)
     omniauth_providers:
       entra_id: "Microsoft"
     verifications:

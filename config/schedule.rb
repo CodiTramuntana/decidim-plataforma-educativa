@@ -18,10 +18,6 @@ every :sunday, at: "4:30 am" do
   rake "decidim:delete_download_your_data_files"
 end
 
-every 1.day, at: "5:00 am" do
-  rake "decidim:metrics:all"
-end
-
 every 1.day, at: "6:00 am" do
   rake "decidim:open_data:export"
 end

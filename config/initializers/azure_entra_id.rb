@@ -2,22 +2,20 @@
 
 # omniauth-entra-id computes uid natively as tid+oid concatenation, which provides
 # cross-tenant uniqueness. No custom uid middleware is required.
-omniauth_secrets = Rails.application.secrets.dig(:omniauth, :entra_id)
+client_id = ENV.fetch("AZURE_CLIENT_ID") { "azure_test_client_id" if Rails.env.test? }
 
-if omniauth_secrets&.dig(:client_id).present?
-  client_id = omniauth_secrets[:client_id]
-  client_secret = omniauth_secrets[:client_secret]
-  tenant_id = omniauth_secrets[:tenant_id]
+if client_id.present?
+  # Since Decidim 0.31 providers are no longer read from secrets.yml. Registering it here
+  # makes Devise define the /users/auth/entra_id route and Decidim render the login button.
+  entra_id_config = Decidim.omniauth_providers[:entra_id] = {
+    enabled: true,
+    client_id: client_id,
+    client_secret: ENV.fetch("AZURE_CLIENT_SECRET") { "azure_test_client_secret" if Rails.env.test? },
+    tenant_id: ENV.fetch("AZURE_TENANT_ID") { "azure_test_tenant_id" if Rails.env.test? },
+    icon_path: ENV.fetch("AZURE_ICON_PATH", "media/images/entra_id_logo.svg")
+  }
 
   Rails.application.config.middleware.use OmniAuth::Builder do
-    provider(
-      :entra_id,
-      {
-        client_id: client_id,
-        client_secret: client_secret,
-        tenant_id: tenant_id,
-        icon_path: omniauth_secrets[:icon_path].presence || "media/images/entra_id_logo.svg"
-      }.compact
-    )
+    provider(:entra_id, entra_id_config.except(:enabled).compact)
   end
 end
