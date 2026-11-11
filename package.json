@@ -23,10 +23,11 @@
     "@decidim/dev": "file:packages/dev",
     "@decidim/eslint-config": "file:packages/eslint-config",
     "@decidim/prettier-config": "file:packages/prettier-config",
-    "@decidim/stylelint-config": "file:packages/stylelint-config"
+    "@decidim/stylelint-config": "file:packages/stylelint-config",
+    "shakapacker": "8.3.0"
   },
   "engines": {
-    "node": "20.11.0",
+    "node": "22.14.0",
     "npm": ">=9.6.7",
     "yarn": "~1.22.1"
   }

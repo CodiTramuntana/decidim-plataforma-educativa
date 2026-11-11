@@ -15,6 +15,7 @@ AllCops:
     - bin/*
     - "**/vendor/**/*"
     - db/schema.rb
+    - db/data_schema.rb
     - db/migrate/*
     - "node_modules/**/*"
     - "spec/decidim_dummy_app/**/*"
