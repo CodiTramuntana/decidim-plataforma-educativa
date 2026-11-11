@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 Decidim.configure do |config|
-
   # Sets the list of available locales for the whole application.
   #
   # When an organization is created through the System area, system admins will
