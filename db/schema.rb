@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2026_11_11_123655) do
+ActiveRecord::Schema[7.2].define(version: 2026_11_12_120228) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "ltree"
   enable_extension "pg_trgm"
@@ -337,6 +337,8 @@ ActiveRecord::Schema[7.2].define(version: 2026_11_11_123655) do
     t.datetime "granted_at", precision: nil
     t.jsonb "verification_metadata", default: {}
     t.string "verification_attachment"
+    t.integer "failed_attempts", default: 0, null: false
+    t.datetime "locked_at"
     t.index ["decidim_user_id", "name"], name: "index_decidim_authorizations_on_decidim_user_id_and_name", unique: true
     t.index ["decidim_user_id"], name: "index_decidim_authorizations_on_decidim_user_id"
     t.index ["unique_id"], name: "index_decidim_authorizations_on_unique_id"
