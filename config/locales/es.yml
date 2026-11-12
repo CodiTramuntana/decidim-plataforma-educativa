@@ -1,10 +1,6 @@
 es:
-  activemodel:
-    attributes:
-      participatory_process:
-        duplicate_steps: Duplicar fases
-        import_steps: Importar fases
   decidim:
+    # TODO: Remove when Decidim adds the es/ca translations for these keys (missing in decidim-pages 0.31.8).
     pages:
       admin:
         pages:
