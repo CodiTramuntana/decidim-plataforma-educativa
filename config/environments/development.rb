@@ -32,13 +32,13 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.delivery_method = :letter_opener_web
   config.action_mailer.smtp_settings = {
-    address: Rails.application.secrets.smtp_address,
-    port: Rails.application.secrets.smtp_port,
-    authentication: Rails.application.secrets.smtp_authentication,
-    user_name: Rails.application.secrets.smtp_username,
-    password: Rails.application.secrets.smtp_password,
-    domain: Rails.application.secrets.smtp_domain,
-    enable_starttls_auto: Rails.application.secrets.smtp_starttls_auto,
+    address: ENV.fetch("MAILER_SMTP_ADDRESS", "localhost"),
+    port: ENV.fetch("MAILER_SMTP_PORT", 587).to_i,
+    authentication: ENV.fetch("MAILER_SMTP_AUTHENTICATION", "plain"),
+    user_name: ENV.fetch("MAILER_SMTP_USER_NAME", nil),
+    password: ENV.fetch("MAILER_SMTP_PASSWORD", nil),
+    domain: ENV.fetch("MAILER_SMTP_DOMAIN", "localhost"),
+    enable_starttls_auto: ActiveModel::Type::Boolean.new.cast(ENV.fetch("MAILER_SMTP_STARTTLS_AUTO", true)),
     openssl_verify_mode: "none"
   }
   config.action_mailer.perform_caching = false

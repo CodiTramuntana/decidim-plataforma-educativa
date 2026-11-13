@@ -4,12 +4,12 @@ source "https://rubygems.org"
 
 ruby RUBY_VERSION
 
-DECIDIM_VERSION = { git: "https://github.com/CodiTramuntana/decidim.git", branch: "release/0.30-stable" }.freeze
+DECIDIM_VERSION = { git: "https://github.com/CodiTramuntana/decidim.git", branch: "release/0.31-stable" }.freeze
 
 gem "decidim", DECIDIM_VERSION
 gem "decidim-cdtb", git: "https://github.com/CodiTramuntana/decidim-module-cdtb.git", branch: "main"
-gem "decidim-decidim_awesome", "~> 0.13.0"
-gem "decidim-term_customizer", git: "https://github.com/CodiTramuntana/decidim-module-term_customizer.git", branch: "upgrade/decidim_0.30"
+gem "decidim-decidim_awesome", "~> 0.14.0"
+gem "decidim-term_customizer", git: "https://github.com/mainio/decidim-module-term_customizer", branch: "release/0.31-stable"
 
 gem "daemons"
 gem "delayed_job_active_record"
@@ -19,9 +19,7 @@ gem "whenever"
 
 # TODO: Psych problem: https://github.com/laserlemon/figaro/issues/289
 # gem "figaro"
-# This gem is an alternative to Figaro meanwhile fix that problem in Figaro.
-# https://github.com/hlascelles/figjam
-gem "figjam"
+gem "dotenv", "~> 3.2.0"
 
 gem "omniauth-entra-id", "~> 3.1.1"
 

@@ -1,5 +1,12 @@
 ca:
   decidim:
+    # TODO: Remove when Decidim adds the es/ca translations for these keys (missing in decidim-pages 0.31.8).
+    pages:
+      admin:
+        pages:
+          edit:
+            add_attachments: Afegir fitxer(s) adjunt(s)
+            edit_attachments: Editar fitxer(s) adjunt(s)
     omniauth_providers:
       entra_id: "Microsoft"
     verifications:

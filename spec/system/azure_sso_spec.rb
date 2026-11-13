@@ -47,7 +47,7 @@ describe "Azure SSO" do
     before { visit decidim.new_user_session_path }
 
     it "displays the Azure SSO button linking to the entra_id provider" do
-      expect(page).to have_css(".login__omniauth-button--entra[href='/users/auth/entra_id']")
+      expect(page).to have_css(".login__omniauth-button--entra[href^='/users/auth/entra_id']")
     end
   end
 
@@ -66,7 +66,7 @@ describe "Azure SSO" do
       end
 
       # Wait for successful redirect before querying the DB
-      expect(page).to have_current_path(decidim.root_path)
+      expect(page).to have_current_path(decidim.root_path, ignore_query: true)
       expect(Decidim::Identity.find_by(provider: "entra_id", uid: uid)).to be_present
       expect(Decidim::User.find_by(email: user_email)).to be_present
     end
@@ -88,7 +88,7 @@ describe "Azure SSO" do
 
       expect(Decidim::User.count).to eq(previous_user_count)
       expect(Decidim::Identity.count).to eq(previous_identity_count)
-      expect(page).to have_current_path(decidim.root_path)
+      expect(page).to have_current_path(decidim.root_path, ignore_query: true)
     end
   end
 end
